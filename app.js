@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors');
 const UserRouter = require("./routers/userRoute");
+const MachinRouter = require("./routers/machinRouter");
+const EnterpriseRouter = require("./routers/enterpriseRouter");
 const app = express();
 
 // Port Number
@@ -28,7 +30,8 @@ app.get('/test',(req , res) => {
 })
 
 app.use("/auth",UserRouter);
-
+app.use('/machin',MachinRouter)
+app.use('/enterprise',EnterpriseRouter)
 app.listen(PORT,()=>{
     console.log("run server sucessfully");
 })

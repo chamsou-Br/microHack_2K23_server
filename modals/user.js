@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const authController = require("../controller/AuthController")
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
+const { use } = require("../routers/userRoute");
 
 
 const UserSchema = mongoose.Schema({
@@ -41,6 +42,7 @@ UserSchema.statics.register = async(info) => {
     try{
             const salt = await bcrypt.genSalt();
             let passwordHash = null;
+            console.log("info",info)
             if (info.password ? info.password.length >= 8 : false) {
                  passwordHash = await bcrypt.hash(info.password , salt);
            } else {
@@ -55,4 +57,5 @@ UserSchema.statics.register = async(info) => {
 }
 
 const User = mongoose.model("UserModal" , UserSchema)
+
 module.exports = User ;
