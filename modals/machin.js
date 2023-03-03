@@ -8,6 +8,10 @@ const MachinScheama = mongoose.Schema({
     nom : {
         type : String
     },
+    model : {
+        type : String,
+        default : "0000000"
+    },
     enterprise : {
         type : mongoose.Schema.Types.ObjectId,
         ref : 'EnterpriseModal'
