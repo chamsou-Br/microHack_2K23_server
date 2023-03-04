@@ -17,7 +17,11 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // connect Database
-mongoose.connect("mongodb://localhost:27017/microHack");
+mongoose.connect("mongodb://localhost:2701IK7/microHack").then(res => {
+    console.log('DataBase connection');
+}).catch(err=> {
+    console.log("err")
+});
 mongoose.connection.once('open',()=> {
     console.log('DataBase connection');
 });
